@@ -1,14 +1,14 @@
-import { createRoot } from "react-dom/client";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { hydrateRoot } from "react-dom/client";
 
-import App from "./App";
-import routes from "./routes";
+import Router from "./routes";
 
 const container = document.getElementById("root");
 
-const root = createRoot(container!);
-
-const router = createBrowserRouter(routes);
-
-root.render(<RouterProvider router={router} />);
+hydrateRoot(
+  container!,
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
+);

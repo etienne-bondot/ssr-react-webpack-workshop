@@ -1,10 +1,13 @@
+import { ReactElement } from "react";
 import App from "./App";
+import { Route, Routes } from "react-router-dom";
 
-const routes = [
-  {
-    path: "/",
-    element: <App />,
-  },
-];
+const Router = (): ReactElement => {
+  return (
+    <Routes>
+      <Route element={<App />} path="/" />
+    </Routes>
+  );
+};
 
-export default routes;
+export default Router;

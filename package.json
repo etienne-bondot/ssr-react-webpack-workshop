@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "npm run build:client && npm run build:server && concurrently 'npm run build:watch:client' 'npm run build:watch:server' 'nodemon ./build/server/bundle.js'",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "webpack --config webpack.client.js",
+    "build:server": "webpack --config webpack.server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "start:server": "ts-node server/index.ts"
+    "build:watch:client": "webpack --config webpack.client.js --watch",
+    "build:watch:server": "webpack --config webpack.server.js --watch"
   },
   "author": "",
   "license": "ISC",
@@ -21,12 +25,14 @@
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
+    "concurrently": "^8.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "nodemon": "^3.0.1",
     "ts-loader": "^9.4.4",
-    "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }
